@@ -1,3 +1,6 @@
+<!-- Dev de Corazon 
+     El codigo de la galaxia de flores amarillas
+     -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -99,7 +102,7 @@
 </head>
 <body>
 
-    <!-- Solo mensaje de feliz día, sin panel -->
+    <!-- Mensaje -->
     <div class="greeting">
         🌻 Feliz día de las Flores Amarillas 🌻
         <small>✨ Un ramo de estrellas para ti ✨</small>
@@ -162,8 +165,8 @@
         controls.autoRotateSpeed = 0.65;
         controls.target.set(0, 0.5, 0);
 
-        // ---------- 1. FLORES EN FORMA DE GALAXIA (partículas densas) ----------
-        // Texturas variadas de flores amarillas (pequeñas)
+        // ---------- 1. FLORES EN FORMA DE GALAXIA ----------
+        // Texturas variadas de flores amarillas 
         function createFlowerTexture(type) {
             const canvas = document.createElement('canvas');
             canvas.width = 128;
@@ -172,7 +175,7 @@
             ctx.clearRect(0, 0, 128, 128);
             const cx = 64, cy = 64;
             
-            if (type === 0) { // clásica
+            if (type === 0) { 
                 for (let i = 0; i < 6; i++) {
                     const angle = (i / 6) * Math.PI * 2;
                     const px = cx + Math.cos(angle) * 32;
@@ -182,7 +185,7 @@
                     ctx.fillStyle = '#FFE55C';
                     ctx.fill();
                 }
-            } else if (type === 1) { // margarita
+            } else if (type === 1) { 
                 for (let i = 0; i < 8; i++) {
                     const angle = (i / 8) * Math.PI * 2;
                     const px = cx + Math.cos(angle) * 38;
@@ -346,14 +349,14 @@
         function createSunflower(x, z, yOffset = 0, scaleFactor = 1.0) {
             const group = new THREE.Group();
             
-            // Tallo (cilindro verde)
+            // Tallo 
             const stemGeo = new THREE.CylinderGeometry(0.12 * scaleFactor, 0.18 * scaleFactor, 1.1 * scaleFactor, 6);
             const stemMat = new THREE.MeshStandardMaterial({ color: 0x5a9e4e, roughness: 0.6, metalness: 0.1 });
             const stem = new THREE.Mesh(stemGeo, stemMat);
             stem.position.y = -0.55 * scaleFactor;
             group.add(stem);
             
-            // Hojas (planos verdes)
+            // Hojas 
             const leafMat = new THREE.MeshStandardMaterial({ color: 0x6ab04c });
             const leaf1Geo = new THREE.BoxGeometry(0.35 * scaleFactor, 0.08 * scaleFactor, 0.2 * scaleFactor);
             const leaf1 = new THREE.Mesh(leaf1Geo, leafMat);
@@ -366,7 +369,7 @@
             leaf2.rotation.z = -0.5;
             group.add(leaf2);
             
-            // Centro de la flor (marrón)
+            // Centro de la flor 
             const centerGeo = new THREE.SphereGeometry(0.28 * scaleFactor, 16, 16);
             const centerMat = new THREE.MeshStandardMaterial({ color: 0xb5651d, emissive: 0x7a3e0a, emissiveIntensity: 0.25 });
             const center = new THREE.Mesh(centerGeo, centerMat);
@@ -405,8 +408,6 @@
             return group;
         }
         
-        // Crear varios ramos de girasoles agrupados (pequeños grupos)
-        // Generamos posiciones en la galaxia: en brazos, cerca del núcleo y algunos dispersos
         const sunflowerPositions = [];
         // Núcleo: algunos alrededor
         for (let i = 0; i < 8; i++) {
